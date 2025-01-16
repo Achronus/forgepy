@@ -34,6 +34,20 @@ You've encountered something unexpected 🤯. Please report this issue on [brigh
 """
 
 
+def creation_msg(
+    project_name: str,
+    project_type: str,
+    ci_deps: bool,
+    dl_deps: bool,
+) -> str:
+    extra = ""
+
+    if dl_deps:
+        extra = "\n❗ Warning: PyTorch added to dependencies with CUDA. May take extra time to create.\n"
+
+    return f"\n{MAGIC} Creating new [magenta]{project_type}[/magenta] project called [green]{project_name}[/green] with [yellow]ci_deps={ci_deps}[/yellow] {MAGIC}\n{extra}"
+
+
 def error_msg_with_checks(title: str, desc: str) -> str:
     """Formats error messages that have a title and a list of checks."""
     return textwrap.dedent(f"\n{FAIL} [bright_red]{title}[/bright_red] {FAIL}\n") + desc
