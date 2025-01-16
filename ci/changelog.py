@@ -59,7 +59,7 @@ def extract_changelog(tag: str) -> None:
 
     version_content = "\n".join(match.group(1).strip().split("\n")[1:])
     footer = (
-        f"\n\nFor a full list of version changes, visit the [changelog]({repo_url}/blob/changelog/CHANGELOG.md)."
+        f"\n\nFor a full list of version changes, visit the [changelog]({repo_url}/blob/main/CHANGELOG.md)."
         f"\nFor commit history for this release, see [commits]({commits_url})."
     )
     changelog_entry = f"{version_content}{footer}\n"
