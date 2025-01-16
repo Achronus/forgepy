@@ -1,0 +1,23 @@
+[project]
+name = "forgepy"
+version = "0.1.0"
+description = "A simple CLI tool for bootstrapping new projects fast"
+authors = [{ name = "Ryan Partridge", email = "rpartridge101@gmail.com" }]
+license = { text = "Apache-2.0" }
+readme = "README.md"
+requires-python = ">=3.12,<4.0"
+dependencies = ["typer (>=0.15.1,<0.16.0)", "questionary (>=2.1.0,<3.0.0)"]
+
+[tool.poetry.scripts]
+forgepy = "forgepy.main:app"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.5"
+
+
+[tool.poetry.group.ci.dependencies]
+git-cliff = "^2.7.0"
