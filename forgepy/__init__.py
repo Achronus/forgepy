@@ -1,5 +1,9 @@
 from enum import StrEnum
 
+from rich.console import Console
+
+console = Console()
+
 
 class ProjectType(StrEnum):
     """Different types of projects."""
@@ -15,4 +19,5 @@ class ProjectType(StrEnum):
 
 __all__ = [
     "ProjectType",
+    "console",
 ]
