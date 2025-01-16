@@ -1,6 +1,6 @@
 [project]
 name = "zenforge"
-version = "0.1.0"
+version = "0.1.1"
 description = "A simple CLI tool for bootstrapping new projects fast"
 authors = [{ name = "Ryan Partridge", email = "rpartridge101@gmail.com" }]
 maintainers = [{ name = "Ryan Partridge", email = "rpartridge101@gmail.com" }]
