@@ -1,8 +1,8 @@
 import importlib.resources as pkg_resources
 
-from forgepy.cli.codes import SetupSuccessCodes, CommonErrorCodes
-from forgepy.cli.display import create_complete_panel, ProgressTracker
-from forgepy.cli.message import MessageHandler, MSG_MAPPER, creation_msg, PASS, FAIL
+from zenforge.cli.codes import SetupSuccessCodes, CommonErrorCodes
+from zenforge.cli.display import create_complete_panel, ProgressTracker
+from zenforge.cli.message import MessageHandler, MSG_MAPPER, creation_msg, PASS, FAIL
 
 
 PKG_DIR = pkg_resources.files("forgepy")

@@ -1,9 +1,9 @@
 from typing import Annotated
 from pathlib import Path
 
-from forgepy import ProjectType, console
-from forgepy.cli import MSG_MAPPER, MessageHandler, CommonErrorCodes
-from forgepy.create.method import CreateCommand
+from zenforge import ProjectType, console
+from zenforge.cli import MSG_MAPPER, MessageHandler, CommonErrorCodes
+from zenforge.create.method import CreateCommand
 
 import typer
 

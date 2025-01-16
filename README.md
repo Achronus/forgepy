@@ -1,4 +1,4 @@
-# forgepy
+# Zenforge
 
 A simple CLI tool for bootstrapping new Python projects fast.
 
@@ -6,7 +6,7 @@ A simple CLI tool for bootstrapping new Python projects fast.
 
 I often find myself building the same types of Python projects with the same dependencies over and over again. After a while, it gets tedious repeating the same CLI commands to create a simple project.
 
-Forgepy combats this by using static configuration settings to build projects based on a single `create` command. There are 7 types of projects available:
+_Zenforge_ combats this by using static configuration settings to build projects based on a single `create` command. There are 7 types of projects available:
 
 1) **basic**: a simple project with [Pydantic](https://docs.pydantic.dev/latest/).
 2) **api**: a [FastAPI](https://fastapi.tiangolo.com/) project with [Logfire](https://logfire.pydantic.dev/docs/).
@@ -31,4 +31,24 @@ They also come configured with a set of test dependencies:
 
 ## Building a Project
 
-TBC
+1. Install the package using `pip`:
+
+    ```bash
+    pip install zenforge
+    ```
+
+2. Create a new project with `zenforge create`:
+
+    ```bash
+    zenforge create [PROJECT_NAME] [PROJECT_TYPE]
+    ```
+
+That's it!
+
+The `project_type` must be one of the following options: `['basic', 'api', 'agents', 'dl', 'api-agents', 'api-dl', 'all']`. It defaults to `basic`.
+
+There is also an optional flag for setting up a `ci` dependencies group that comes configured with `git-cliff`. You can add it with `--ci-deps` flag, like so:
+
+```bash
+zenforge create [PROJECT_NAME] api-dl --ci-deps
+```

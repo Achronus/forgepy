@@ -9,8 +9,8 @@ import os
 
 import typer
 
-from forgepy import ProjectType, console
-from forgepy.cli import (
+from zenforge import ProjectType, console
+from zenforge.cli import (
     TEMPLATE_DIR,
     CommonErrorCodes,
     SetupSuccessCodes,
@@ -18,7 +18,7 @@ from forgepy.cli import (
     creation_msg,
     ProgressTracker,
 )
-from forgepy.config import (
+from zenforge.config import (
     DEPENDENCY_MAP,
     TEST_DEPS,
     DEV_DEPS,

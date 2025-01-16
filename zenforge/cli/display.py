@@ -2,7 +2,7 @@ import textwrap
 import time
 from typing import Callable, List, Tuple
 
-from forgepy.cli.message import MAGIC, PASS
+from zenforge.cli.message import MAGIC, PASS
 
 from rich.console import Console
 from rich.panel import Panel

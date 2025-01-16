@@ -7,7 +7,7 @@ import typer
 from rich.console import Console
 from rich.panel import Panel
 
-from forgepy.cli.codes import SetupSuccessCodes, CommonErrorCodes
+from zenforge.cli.codes import SetupSuccessCodes, CommonErrorCodes
 
 
 # Custom print emoji's
