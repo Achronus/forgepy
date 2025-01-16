@@ -43,21 +43,6 @@ jobs:
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
 
-      - name: Commit and push changelog
-        run: |
-          git config --global user.name 'GitHub Actions'
-          git config --global user.email 'actions@github.com'
-
-          git checkout changelog
-          git pull origin changelog
-
-          git add CHANGELOG.md
-          git commit -m "Update changelog with ${{ env.tag }}"
-
-          git push origin changelog
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
