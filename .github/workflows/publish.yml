@@ -50,10 +50,12 @@ jobs:
         run: |
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'actions@github.com'
-          git stash --include-untracked
-          git checkout changelog || git checkout -b changelog origin/changelog
+
+          git stash push
+          git checkout changelog
           git pull origin changelog
           git stash pop
+
           git add CHANGELOG.md
           git commit -m "Update changelog with ${{ env.tag }}"
           git push origin changelog
