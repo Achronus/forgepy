@@ -9,9 +9,8 @@ import os
 
 import typer
 
-from zenforge import ProjectType, console
+from zenforge import ProjectType, console, TEMPLATE_DIR
 from zenforge.cli import (
-    TEMPLATE_DIR,
     CommonErrorCodes,
     SetupSuccessCodes,
     create_complete_panel,
