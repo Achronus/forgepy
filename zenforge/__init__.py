@@ -20,6 +20,14 @@ class ProjectType(StrEnum):
     API_DEEP_LEARNING = "api-dl"
     ALL = "all"
 
+    @staticmethod
+    def dl_project(value: str) -> bool:
+        """Checks if the value is a Deep Learning project."""
+        if "dl" in value or value == "all":
+            return True
+
+        return False
+
 
 __all__ = [
     "ProjectType",

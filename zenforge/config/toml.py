@@ -1,6 +1,6 @@
-from typing import Any, override
+from typing import Any, Dict, Set, override
 
-TomlSettingsType = dict[str, dict[str, Any]]
+TomlSettingsType = Dict[str, Dict[str, Any]]
 
 
 class TomlOptions:
@@ -10,6 +10,38 @@ class TomlOptions:
 
     def as_dict(self) -> TomlSettingsType:
         return {f"[{self.toml_name}]": self.__dict__}
+
+
+class PoetryDependenciesExtras(TomlOptions):
+    """
+    Stores extra information for poetry dependencies for the `pyproject.toml` file.
+
+    Used for installing cuda with `torch` and `torchvision`.
+    """
+
+    toml_name = "tool.poetry.dependencies"
+
+    def __init__(self) -> None:
+        self.items = {
+            "torch": {"source": "pytorch"},
+            "torchvision": {"source": "pytorch"},
+        }
+
+    def items_to_str_dict(self) -> Dict[str, Set[str]]:
+        """Converts the values of the `self.items` dictionary into a strings."""
+        str_dict = {}
+        for key, d in self.items.items():
+            value_str = []
+            for k, v in d.items():
+                value_str.append(f'{k} = "{v}"')
+
+            str_dict[key] = {", ".join(value_str)}
+
+        return str_dict
+
+    @override
+    def as_dict(self) -> TomlSettingsType:
+        return {f"[{self.toml_name}]": self.items_to_str_dict()}
 
 
 class PyTorchSource(TomlOptions):
@@ -105,7 +137,9 @@ def settings_to_toml(d: TomlSettingsType) -> str:
         toml_str += f"{header}\n"
 
         for key, value in settings.items():
-            if isinstance(value, str):
+            if isinstance(value, set):
+                value = str(value).replace("'", " ")
+            elif isinstance(value, str):
                 value = f'"{value}"'
             elif isinstance(value, bool):
                 value = str(value).lower()
@@ -125,14 +159,17 @@ def multi_settings_to_toml(d_list: list[TomlOptions]) -> str:
     return full
 
 
-def set_toml_settings(project_name: str) -> str:
+def set_toml_settings(project_name: str, dl_project: bool) -> str:
     """Sets the extra toml settings to add to the end of the `pyproject.toml` file."""
     items = [
-        PyTorchSource(),
         PytestOptions(project_name),
         MypyOptions(),
         IsortOptions(),
         BlackOptions(),
     ]
+
+    if dl_project:
+        items.insert(0, PoetryDependenciesExtras())
+        items.insert(1, PyTorchSource())
 
     return multi_settings_to_toml(items)
