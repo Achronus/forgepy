@@ -108,7 +108,10 @@ class CreateTasks:
         self.path = path
         self.deps = deps
 
-        self.toml_extras = set_toml_settings(project_name)
+        self.toml_extras = set_toml_settings(
+            project_name,
+            ProjectType.dl_project(project_type),
+        )
 
         self.env_name = "venv"
         self.python_path = (
