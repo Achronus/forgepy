@@ -12,7 +12,7 @@ AGENTS = [
 ]
 
 API = [
-    "fastapi",
+    "fastapi[standard]",
     "logfire",
 ]
 
@@ -24,7 +24,7 @@ DEEP_LEARNING = [
 
 API_AGENTS = [
     "pydantic-ai-slim[logfire]",
-    "fastapi",
+    "fastapi[standard]",
 ]
 
 BASIC = CORE + CORE_CONDITIONAL
